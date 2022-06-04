@@ -1,0 +1,119 @@
+'''Gerar Boleto - Contas a Pagar e Receber'''
+'''Mediante programacao de Linguagem Python'''
+'''Data do programa : 30/05/2022'''
+'''Gerar Boleto - Contas a Pagar e Receber'''
+'''Mediante programacao de Linguagem Python'''
+'''Data do programa : 30/05/2022'''
+'''Analistas : Alvaro, Rhauanne e Shelley'''
+'''==> Processamento <=='''
+'''Para calcularmos os valores corespondentes ao boleto gerado'''
+'''procederemos da seguinte maneira :'''
+'''Executaremos a subtração da data do documento e a data do pagamento'''
+'''Se o resultado for igual a zero o valor do documento será igual ao valor total'''
+'''Se o resultado for maior que zero dar-se-á um desconto de 10(dez) por cento no valor do documento'''
+'''Se o resultado for menor que zero calcularemos multa/juros e outros acréscimos'''
+'''==> variaveis <=='''
+'''==> Entrada de Dados <=='''
+data_docto  = int(input("Digite a data do documento em formato ddmmaaaa : "))
+if data_docto == 00000000:
+   print ('==> Data do documento não pode ser zerada <===')
+   print ('==> Tente novamente com uma data válida   <===')
+   exit()
+data = input('data [d/m/Y]: ')
+data_pagto  = int(input("Digite a data do pagamento em formato ddmmaaaa : "))
+if data_pagto == 00000000:
+   print ('==> Data do pagamento não pode ser zerada <===')
+   print ('==> Tente novamente com uma data válida   <===')
+   exit()
+vlr_docto   = float(input ("Digite valor do documento                      : "))
+if vlr_docto == 00000000:
+   print ('==> Valor do documento não pode ser zerado <===')
+   print ('==> Tente novamente com um valor válido    <===')
+   exit()
+else:
+  a = data_docto 
+  b = data_pagto
+  print ('a', data_docto)
+  print ('b', data_pagto)  
+  if a > b:
+      vlr_desct  = int(input("Digite o valor do desconto : ")) 
+      result1 = ((vlr_docto) * 0.9)
+  print ('!------------------------------------------------------------------------------!')
+  print ('!Banco Millenium !007-1! 00701.09032 92053.400393 33718.10002 7 90030000012356 !')
+  print ('!------------------------------------------------------------------------------!')
+  print ('!Local de Pagamento                                           !   Vencimento   !')
+  data1 = data
+  txt  = "!  Até o vencimento, Pagável em qualquer Banco Conveniado     !   {}   !" 
+  print(txt.format(data1))
+  print ('!  Após o vencimento sòmente no Banco Millenium               !                !')
+  print ('!------------------------------------------------------------------------------!')
+  print ('!Beneficiário                                                 ! Agência/Conta  !')
+  agecta = 123.1234
+  txt = "!  Shopping Virtual Millenium   CNPJ 01.002.003/0001-77       !    {}    !"
+  print(txt.format(agecta))
+  print ('!  Av. Otávio Mangabeira, 2345 - Salvador - Ba Cep: 41706-690 !                !')
+  print ('!------------------------------------------------------------------------------!')
+  print ('! Data Docto ! Nro docto ! Espécie Docto ! Aceite ! Data Proc !  Nosso Número  !')
+  nosnro = 12345678.99
+  txt = "! 99/99/2022 ! 000000001 !               !        ! 99/99/2022!   {}  !"
+  print(txt.format(nosnro))
+  print ('!            !           !               !        !           !                !')
+  print ('!------------------------------------------------------------------------------!')
+  print ('! Uso Banco  ! Carteira   ! Espécie     ! Quantidade ! Valor  !(=)Valor Docto  !')
+  vlrdoc = vlr_docto
+  txt = "!            !    100     !    R$       !                     !    {}      !"
+  print(txt.format(vlrdoc))
+  print ('!            !            !             !            X        !                !')
+  print ('!------------------------------------------------------------------------------!')
+  print ('! Instruções de responsabilidade do beneficiário.             !(-)Descto/Abatim!')
+  if a > b:
+       result2 = ((vlr_docto) * 0.1)
+       txt = "!                                                             !     {:.2f}      !"
+       print(txt.format(result2))
+  print ('!                                                             !                !')
+  print ('!                                                             !                !')
+  print ('!                                                             !----------------!')
+  print ('!                                                             !(-)Outras Deduç.!')
+  print ('!                                                             !                !')
+  print ('!                                                             !                !')
+  print ('! Antes do vencto. desconto de 10% sobre valor do documento.  !----------------!')
+  print ('! Após vencto. multa de 20% sobre valor do documento.         !(+)Multa/Juros  !') 
+  print ('! Não receber após 10 (dez) dias do vencimento.               !                !')
+  if a < b:
+       result3 = ((vlr_docto) * 0.2)
+       txt = "!                                                             !     {:.2f}     !"
+       print(txt.format(result3))
+  print ('!                                                             !                !')
+  print ('!                                                             !----------------!')
+  print ('!                                                             !(+)Outros Acrésc!')
+  print ('!                                                             !                !')
+  print ('!                                                             !                !')
+  print ('!                                                             !----------------!')
+  a = data_docto 
+  b = data_pagto
+  if a == b:
+     print ('!                                                             !(=)Valor Total  !')
+     vlrdoc = vlr_docto
+     txt = "!                                                             !     {:.2f}     !"
+     print(txt.format(vlrdoc))
+  elif a > b:
+       result1 = ((vlr_docto) - (vlr_docto) * 0.1)
+       print ('!                                                             !(=)Valor Total  !')
+       txt = "!                                                             !     {:.2f}     !"
+       print(txt.format(result1))
+  elif a < b:
+       result3 = ((vlr_docto) + (vlr_docto) * 0.2)
+       print ('!                                                             !(=)Valor Total  !')
+       txt = "!                                                             !     {:.2f}     !"
+       print(txt.format(result3))
+  print ('!                                                             !                !')
+  print ('!------------------------------------------------------------------------------!')
+  print ('! Pagador: Manuella Guelfi Fernandes  CPF: 123.456.789-10                      !')
+  print ('!                                                                              !')
+  print ('!          Rua Sobe e desce, 123 - Morro da Paciência Zona Norte SP            !')
+  print ('!          02278-050 - São Paulo SP                                            !')
+  print ('!                                                                              !')
+  print ('!------------------------------------------------------------------------------!')
+  print ('!                         Autenticação Mecânica           Ficha de Compensação !')
+  print ('!------------------------------------------------------------------------------!')
+  print ('!------------------------------------------------------------------------------!')
